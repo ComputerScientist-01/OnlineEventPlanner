@@ -1,7 +1,8 @@
 package com.demo;
 
 import com.demo.dao.UserDao;
-import com.demo.dao.UserDaoImpl;
+import com.demo.dao.UserDAOImpl;
+import com.demo.db.DBUtil;
 import com.demo.model.User;
 import com.demo.service.UserService;
 import com.demo.service.UserServiceImpl;

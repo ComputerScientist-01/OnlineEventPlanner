@@ -1,5 +1,7 @@
 package com.demo.model;
 
+import java.util.List;
+
 public class Vendor {
 	private long vendorId;
 	private String name;
@@ -61,8 +63,8 @@ public class Vendor {
 		return contactNumbers;
 	}
 
-	public void setContactNumbers(String contactNumbers) {
-		this.contactNumbers = contactNumbers;
+	public void setContactNumbers(List<String> list) {
+		this.contactNumbers = list;
 	}
 
 	public String getEventPackages() {

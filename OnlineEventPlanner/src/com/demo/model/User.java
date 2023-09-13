@@ -1,12 +1,14 @@
 package com.demo.model;
 
+import java.sql.Date;
+
 public class User {
     private long userId;
     private String fullName;
     private String username;
     private String password;
-    private String dateOfJoining;
-    private String dateOfBirth;
+    private Date dateOfJoining;
+    private Date dateOfBirth;
     private String department;
     private String mobile;
     private String email;
@@ -19,8 +21,8 @@ public class User {
     	super();
     }
 
-    public User(long userId, String fullName, String username, String password, String dateOfJoining,
-                String dateOfBirth, String department, String mobile, String email, String location, String status) {
+    public User(long userId, String fullName, String username, String password, Date dateOfJoining,
+                Date dateOfBirth, String department, String mobile, String email, String location, String status) {
         this.userId = userId;
         this.fullName = fullName;
         this.username = username;
@@ -66,19 +68,19 @@ public class User {
         this.password = password;
     }
 
-    public String getDateOfJoining() {
+    public Date getDateOfJoining() {
         return dateOfJoining;
     }
 
-    public void setDateOfJoining(String dateOfJoining) {
+    public void setDateOfJoining(Date dateOfJoining) {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

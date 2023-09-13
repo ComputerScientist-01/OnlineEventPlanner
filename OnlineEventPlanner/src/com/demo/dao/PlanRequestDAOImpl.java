@@ -4,6 +4,7 @@ import com.demo.model.PlanRequest;
 import com.demo.db.DBUtil;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,12 @@ public class PlanRequestDAOImpl implements PlanRequestDAO {
 
     public PlanRequestDAOImpl() {
         // Initialize the database connection here (e.g., using DatabaseConnection class)
-        connection = DBUtil.getConnection();
+        try {
+			connection = DBUtil.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Override
@@ -55,8 +61,9 @@ public class PlanRequestDAOImpl implements PlanRequestDAO {
         String query = "INSERT INTO plan_requests (from_date, to_date, services_needed, " +
                 "persons_attending, other_services) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setDate(1, planRequest.getFromDate());
-            preparedStatement.setDate(2, planRequest.getToDate());
+        	
+        	preparedStatement.setDate(1, (Date) planRequest.getFromDate());
+            preparedStatement.setDate(2, (Date) planRequest.getToDate());
             // Set other parameters accordingly
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -69,8 +76,8 @@ public class PlanRequestDAOImpl implements PlanRequestDAO {
         String query = "UPDATE plan_requests SET from_date=?, to_date=?, services_needed=?, " +
                 "persons_attending=?, other_services=? WHERE request_id=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setDate(1, planRequest.getFromDate());
-            preparedStatement.setDate(2, planRequest.getToDate());
+            preparedStatement.setDate(1, (Date) planRequest.getFromDate());
+            preparedStatement.setDate(2, (Date) planRequest.getToDate());
             // Set other parameters accordingly
             preparedStatement.setLong(6, planRequest.getRequestId()); // Set the request_id for the WHERE clause
             preparedStatement.executeUpdate();
