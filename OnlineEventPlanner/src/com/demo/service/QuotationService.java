@@ -1,15 +1,13 @@
-package com.demo.dao;
+package com.demo.service;
 
 import com.demo.model.Quotation;
 
 import java.util.List;
 
-public interface QuotationDAO {
+public interface QuotationService {
     Quotation findById(long quotationId);
     List<Quotation> findAll();
-    void save(Quotation quotation);
+    void create(Quotation quotation);
     void update(Quotation quotation);
     void delete(long quotationId);
-	void create(Quotation quotation);
-	
 }

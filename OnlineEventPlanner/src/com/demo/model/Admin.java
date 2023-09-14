@@ -1,7 +1,7 @@
 package com.demo.model;
 
 public class Admin {
-	   private int adminId;
+	   private long adminId;
 	    private String username;
 	    private String fullName;
 	    private String password;
@@ -27,11 +27,11 @@ public class Admin {
 			return "Admin [adminId=" + adminId + ", username=" + username + ", fullName=" + fullName + ", password="
 					+ password + ", email=" + email + ", mobile=" + mobile + "]";
 		}
-		public int getAdminId() {
+		public long getAdminId() {
 			return adminId;
 		}
-		public void setAdminId(int adminId) {
-			this.adminId = adminId;
+		public void setAdminId(long l) {
+			this.adminId = l;
 		}
 		public String getUsername() {
 			return username;

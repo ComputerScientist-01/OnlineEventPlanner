@@ -7,13 +7,40 @@ public class Quotation {
     private long userId; // Applicable for Classic package
     private long vendorId; // Applicable for Premium package
     private String status; // Accept / Reject / Pending (default: Pending)
-
+    private long id;
+    private long packageId;
     // Constructors, getters, setters
 
-    public Quotation() {
+    public long getId() {
+		return id;
+	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public long getPackageId() {
+		return packageId;
+	}
+
+
+
+	public void setPackageId(long packageId) {
+		this.packageId = packageId;
+	}
+
+
+
+	public Quotation() {
         // Default constructor
     	super();
     }
+    
+    
 
     public Quotation(long quotationId, String packageType, double estimatedAmount, long userId, long vendorId, String status) {
         this.quotationId = quotationId;

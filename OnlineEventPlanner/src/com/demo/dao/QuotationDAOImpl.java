@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,4 +110,34 @@ public class QuotationDAOImpl implements QuotationDAO {
         quotation.setStatus(resultSet.getString("status"));
         return quotation;
     }
+
+    
+    
+    @Override
+    public void create(Quotation quotation) {
+        String query = "INSERT INTO quotations (package_id, user_id, vendor_id, status) " +
+                       "VALUES (?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setLong(1, quotation.getPackageId());
+            preparedStatement.setLong(2, quotation.getUserId());
+            preparedStatement.setLong(3, quotation.getVendorId());
+            preparedStatement.setString(4, quotation.getStatus());
+
+            // Execute the query and check if a new row was inserted
+            int rowsInserted = preparedStatement.executeUpdate();
+            if (rowsInserted > 0) {
+                // Retrieve the generated quotation ID
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    long generatedId = generatedKeys.getLong(1);
+                    quotation.setId(generatedId); // Set the generated ID using the setter method
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

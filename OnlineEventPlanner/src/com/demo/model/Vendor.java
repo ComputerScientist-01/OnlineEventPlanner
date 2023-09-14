@@ -7,7 +7,7 @@ public class Vendor {
 	private String name;
 	private String address;
 	private String email;
-	private String contactNumbers; // You may consider using a List<String> for multiple contact numbers
+	private List<String> contactNumbers; // You may consider using a List<String> for multiple contact numbers
 	private String eventPackages;
 
 // Constructors, getters, setters
@@ -17,7 +17,7 @@ public class Vendor {
 		super();
 	}
 
-	public Vendor(long vendorId, String name, String address, String email, String contactNumbers,
+	public Vendor(long vendorId, String name, String address, String email, List<String> contactNumbers,
 			String eventPackages) {
 		this.vendorId = vendorId;
 		this.name = name;
@@ -59,7 +59,7 @@ public class Vendor {
 		this.email = email;
 	}
 
-	public String getContactNumbers() {
+	public List<String> getContactNumbers() {
 		return contactNumbers;
 	}
 

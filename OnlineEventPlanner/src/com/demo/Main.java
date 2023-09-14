@@ -1,6 +1,6 @@
 package com.demo;
 
-import com.demo.dao.UserDao;
+import com.demo.dao.UserDAO;
 import com.demo.dao.UserDAOImpl;
 import com.demo.db.DBUtil;
 import com.demo.model.User;
@@ -17,7 +17,7 @@ public class Main {
             Connection connection = DBUtil.getConnection();
 
             // Create instances of UserDAO and UserService
-            UserDAO userDAO = new UserDAOImpl(connection);
+            UserDAOImpl userDAO = new UserDAOImpl(connection);
             UserService userService = new UserServiceImpl(userDAO);
 
             // Example: Creating a new user
